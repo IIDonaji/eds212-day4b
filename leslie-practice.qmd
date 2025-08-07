@@ -75,4 +75,37 @@ insect_y3 <- insect_leslie %*% insect_y2
 insect_y4 <- insect_leslie %*% insect_y3
 insect_y4
 ```
+## Another Leslie Matrix Example
+```{r}
+# Make the projection matrix (bc, how pop porject from one time step to the next time step)
+tree_leslie <- matrix(c(0, 0, 5000, 0.10, 0, 0, 0, 0.06, 0.95), 
+                      nrow = 3, ncol = 3, byrow = TRUE)
+
+# Check it out (it should look just like the one you drew!) ----
+tree_leslie
+```
+```{r}
+# create intial conditions at year 0
+# year 0: initial condition ----
+tree_0 <- c(5000, 0, 0)
+
+# year 1 ----
+tree_1 <- tree_leslie %*% tree_0
+tree_1
+```
+```{r}
+# year 2 ----
+tree_2 <- tree_leslie %*% tree_1
+tree_2
+```
+```{r}
+# year 3 ----
+tree_3 <- tree_leslie %*% tree_2
+tree_3
+```
+```{r}
+# year 4 ----
+tree_4 <- tree_leslie %*% tree_3
+tree_4
+```
 
